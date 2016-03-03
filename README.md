@@ -2,7 +2,7 @@
 
 Declarative dependency injection for Polymer elements.
 
-For more information and demo see [component page](https://firmfirm.github.io/f-di/).
+For a live demo see [component page](https://firmfirm.github.io/f-di/).
 
 ### f-di-config
 
@@ -10,7 +10,7 @@ For more information and demo see [component page](https://firmfirm.github.io/f-
 
 ### f-di-bind
 
-[`<f-di-bind>`](#f-di-bind) is an element to specify a binding from specified key to element tag name.
+`<f-di-bind>` is an element to specify a binding from specified key to element tag name.
 
 If there are multiple bindings with the same key, only the lastly initialized one will work.
 This means that you can change dependency injection dynamically for newly imported elements.
@@ -26,7 +26,7 @@ If used inside `<f-di-config>` it will wait until both properties are available 
 Use `<f-di key="DependencyKey">` where you want dependecy injection to happen.
 
 **Preconditions**:
-  - Parent element must use [`FBehaviors.DI`](#FBehaviors.DI) behavior.
+  - Parent element must use `FBehaviors.DI` behavior.
   - Dependency with specified key is configured with `<f-di-bind>` prior to registering parent element.
   This means that you will have to do lazy-loading, as calling Polymer({...}) invokes the registration.
 
@@ -34,7 +34,7 @@ It will copy over all attributes that you put on `<f-di>`. All Polymer's effects
 
 ### FBehaviors.DI
 
-[`FBehaviors.DI`](#FBehaviors.DI) is a Polymer behavior to enable dependency injections.
+`FBehaviors.DI` is a Polymer behavior to enable dependency injections.
 
 ## Example
 
