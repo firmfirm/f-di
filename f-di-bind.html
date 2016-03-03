@@ -7,6 +7,14 @@ window.FBehaviors = window.FBehaviors || {};
 (function() {
   var bindings = {};
 
+  /**
+   * FBehaviors.DI is a Polymer behavior to enable dependency injections.
+   *
+   * For more information and example see [`<f-di-config>`](#f-di-config).
+   *
+   * @demo demo/index.html
+   * @polymerBehavior
+   */
   FBehaviors.DI = {
     // Only called once for every element (not instance) using this behavior.
     registered: function() {
@@ -36,10 +44,20 @@ window.FBehaviors = window.FBehaviors || {};
     }
   };
 
+  /*
+   * `<f-di-bind>` is an element to specify a binding from specified key to element tag name.
+   *
+   * For more information and example see [`<f-di-config>`](#f-di-config).
+   *
+   * @demo demo/index.html
+   */
   Polymer({
     is: 'f-di-bind',
     properties: {
+      // Binding key that you will use in `<f-di f-di-key="HERE">`
       key: String,
+
+      // Tag name to bind to (replacement of `<f-di>` with specified key)
       to: String
     },
 

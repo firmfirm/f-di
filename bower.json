@@ -2,9 +2,9 @@
   "name": "f-di",
   "version": "0.1.0",
   "authors": [
-    "Anonymous <anonymous@example.com>"
+    "Martynas <martynas@firmfirm.co>"
   ],
-  "description": "An element providing a solution to no problem in particular.",
+  "description": "Declarative dependency injection for Polymer elements",
   "keywords": [
     "web-components",
     "polymer",
@@ -20,7 +20,7 @@
     "/.*"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#~1.3.0"
+    "polymer": "Polymer/polymer#^1.3.0"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
