@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title>f-di Demo</title>
+    <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="import" href="../f-di-config.html">
+
+    <!-- Lazy load application elements when DI has finished setup -->
+    <script>
+      document.addEventListener('f-di-config-ready', function() {
+        var link = document.createElement('link');
+        link.setAttribute('rel', 'import');
+        link.setAttribute('href', './demo-app.html');
+        this.querySelector('head').appendChild(link);
+      });
+    </script>
+  </head>
+  <body unresolved>
+
+    <p>An example of <code>&lt;f-di&gt;</code>:</p>
+
+    <f-di-config>
+      <f-di-bind key="demo" to="demo-replacement"></f-di-bind>
+      <f-di-bind key="input" to="input"></f-di-bind>
+    </f-di-config>
+
+    <demo-app></demo-app>
+  </body>
+</html>

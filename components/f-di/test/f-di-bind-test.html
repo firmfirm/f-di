@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+
+    <link rel="import" href="../f-di-bind.html">
+  </head>
+  <body>
+
+    <test-fixture id="bind-fixture">
+      <template>
+        <f-di-bind></f-di-bind>
+      </template>
+    </test-fixture>
+
+    <script>
+      suite('<f-di-bind>', function() {
+
+        var sut;
+
+        setup(function() {
+          sut = fixture('bind-fixture');
+          sut.fire = sinon.spy();
+        });
+
+        test('fires `f-di-bind` when both properties are set', function() {
+          sut.key = 'some';
+          sut.to = 'tag';
+          expect(sut.fire).to.be.calledOnce;
+          expect(sut.fire).to.be.calledWith('f-di-bind');
+        });
+
+      });
+    </script>
+
+  </body>
+</html>

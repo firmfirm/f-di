@@ -1,0 +1,74 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<script>
+
+window.FBehaviors = window.FBehaviors || {};
+
+(function() {
+  var bindings = {};
+
+  /**
+   * FBehaviors.DI is a Polymer behavior to enable dependency injections.
+   *
+   * For more information and example see [`<f-di-config>`](#f-di-config).
+   *
+   * @demo demo/index.html
+   * @polymerBehavior
+   */
+  FBehaviors.DI = {
+    // Only called once for every element (not instance) using this behavior.
+    registered: function() {
+      // Warning: using Polymer's internal property, might break
+      var deps = this._template.content.querySelectorAll('f-di');
+      for (var i = 0; i < deps.length; i++) {
+
+        // Create a replacement element
+        var el = deps[i];
+        var key = el.getAttribute('f-di-key');
+        if (!bindings[key]) {
+          console.warn('No such f-di-key:', key);
+          continue;
+        }
+        var replacement = document.createElement(bindings[key]);
+
+        // Copy over all attributes that are not annotations
+        // (e.g. bindings or events)
+        for (var index = 0; index < el.attributes.length; ++index) {
+          var attr = el.attributes[index];
+          replacement.setAttribute(attr.name, attr.value);
+        }
+
+        // Replace!
+        el.parentNode.replaceChild(replacement, el);
+      }
+    }
+  };
+
+  /*
+   * `<f-di-bind>` is an element to specify a binding from specified key to element tag name.
+   *
+   * For more information and example see [`<f-di-config>`](#f-di-config).
+   *
+   * @demo demo/index.html
+   */
+  Polymer({
+    is: 'f-di-bind',
+    properties: {
+      // Binding key that you will use in `<f-di f-di-key="HERE">`
+      key: String,
+
+      // Tag name to bind to (replacement of `<f-di>` with specified key)
+      to: String
+    },
+
+    observers: [
+      '_bind(key, to)'
+    ],
+
+    _bind: function(key, to) {
+      bindings[key] = to;
+      this.fire('f-di-bind');
+    }
+  });
+})();
+</script>

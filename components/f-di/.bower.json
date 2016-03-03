@@ -1,0 +1,39 @@
+{
+  "name": "f-di",
+  "version": "0.1.1",
+  "authors": [
+    "Martynas <martynas@firmfirm.co>"
+  ],
+  "description": "Declarative dependency injection for Polymer elements",
+  "keywords": [
+    "web-components",
+    "polymer",
+    "dependency",
+    "injection",
+    "ioc",
+    "di",
+    "container"
+  ],
+  "main": "f-di-config.html",
+  "homepage": "https://github.com/firmfirm/f-di/",
+  "ignore": [
+    "/.*"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.3.0"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "web-component-tester": "^4.0.0"
+  },
+  "_release": "0.1.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.1.1",
+    "commit": "4040f65c0106d5f472f23b4786e0a6fb5cb3d495"
+  },
+  "_source": "https://github.com/firmfirm/f-di.git",
+  "_target": "^0.1.1",
+  "_originalSource": "https://github.com/firmfirm/f-di.git",
+  "_direct": true
+}

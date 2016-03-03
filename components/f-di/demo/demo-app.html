@@ -1,0 +1,42 @@
+<dom-module id="demo-app">
+  <template>
+    <f-di f-di-key="demo" host-to-child="[[hostToChild]]" child-to-host="{{childToHost}}"></f-di>
+    <hr />
+    <span>Child likes DI </span>
+    <f-di f-di-key="input" type="number" min="1000" value="{{childToHost::input}}"></f-di>
+    <span> times</span>
+  </template>
+  <script>
+    Polymer({
+      is: 'demo-app',
+      behaviors: [FBehaviors.DI],
+      properties: {
+        hostToChild: {
+          value: 'Hello, child!'
+        },
+        childToHost: Number
+      }
+    });
+  </script>
+</dom-module>
+
+<dom-module id="demo-replacement">
+  <template>
+    <span>Parent says: </span>
+    <b>[[hostToChild]]</b>
+    <button on-click="_like">Like +[[childToHost]]</button>
+  </template>
+  <script>
+    Polymer({
+      is: 'demo-replacement',
+      properties: {
+        hostToChild: String,
+        childToHost: {
+          notify: true,
+          value: 1000
+        }
+      },
+      _like: function() { this.childToHost++; }
+    });
+  </script>
+</dom-module>
