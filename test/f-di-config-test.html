@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+
+    <link rel="import" href="../f-di-config.html">
+  </head>
+  <body>
+
+    <test-fixture id="config-fixture">
+      <template>
+        <f-di-config>
+          <f-di-bind id="bind"></f-di-bind>
+          <f-di-bind></f-di-bind>
+          <f-di-bind></f-di-bind>
+        </f-di-config>
+      </template>
+    </test-fixture>
+
+    <script>
+      suite('<f-di-config>', function() {
+
+        var sut, bind;
+
+        setup(function() {
+          sut = fixture('config-fixture');
+          sut.fire = sinon.spy();
+          bind = document.getElementById("bind");
+        });
+
+        test('fires `f-di-config-ready` after number of binds equal to content children', function() {
+          bind.fire('f-di-bind');
+          expect(sut.fire).to.not.be.called;
+          bind.fire('f-di-bind');
+          expect(sut.fire).to.not.be.called;
+          bind.fire('f-di-bind');
+          expect(sut.fire).to.be.calledOnce;
+          expect(sut.fire).to.be.calledWith('f-di-config-ready');
+        });
+
+      });
+    </script>
+
+  </body>
+</html>

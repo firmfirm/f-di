@@ -1,0 +1,27 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="./f-di-bind.html">
+
+<dom-module id="f-di-config">
+  <template>
+    <content></content>
+  </template>
+  <script>
+    Polymer({
+      is: 'f-di-config',
+
+      listeners: { 'f-di-bind': '_bind' },
+
+      created: function() {
+        this._numBinds = 0;
+      },
+
+      _bind: function(e) {
+        // Fire `f-di-config-ready` only when all bindings initialize
+        if (this.getEffectiveChildren().length === ++this._numBinds) {
+          this.fire('f-di-config-ready');
+        }
+        e.stopPropagation();
+      }
+    });
+  </script>
+</dom-module>
